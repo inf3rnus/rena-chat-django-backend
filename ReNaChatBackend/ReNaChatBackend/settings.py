@@ -72,6 +72,8 @@ JWT_AUTH = {
     'JWT_AUTH_COOKIE': 'JWT',     # the cookie will also be sent on WebSocket connections
 }
 
+ASGI_APPLICATION = 'mysite.routing.application'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
