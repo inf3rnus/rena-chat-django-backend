@@ -72,7 +72,7 @@ JWT_AUTH = {
     'JWT_AUTH_COOKIE': 'JWT',     # the cookie will also be sent on WebSocket connections
 }
 
-ASGI_APPLICATION = 'mysite.routing.application'
+ASGI_APPLICATION = 'ReNaChatBackend.routing.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
