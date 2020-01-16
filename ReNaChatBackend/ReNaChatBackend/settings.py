@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
 
     'api',
+    'chat',
     'friends',
     'users',
 ]
