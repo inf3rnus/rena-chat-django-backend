@@ -9,6 +9,8 @@ from friends.views import removePendingFriend
 from friends.views import removeRequestedFriend
 from friends.views import getRequestedFriends
 
+from friends.views import getFriendList
+
 urlpatterns = [
     path('get_pending_friends', getPendingFriends),
     path('get_requested_friends', getRequestedFriends),
@@ -18,5 +20,7 @@ urlpatterns = [
     path('confirm_friend', confirmFriend),
     path('remove_friend', removeFriend),
     path('get_friends', getFriends),
+
+    path('get_global_friend_list', getFriendList),
 ]
 

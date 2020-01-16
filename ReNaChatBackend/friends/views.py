@@ -117,3 +117,9 @@ def getFriends(request):
     friendUserList = friendObj.friends.all()
     serializer = UserSerializer(friendUserList, many=True)
     return Response(serializer.data)
+
+@api_view(['get'])
+@permission_classes([IsAuthenticated])
+def getFriendList(request):
+    serializer = FriendSerializer(Friend.objects.all(), many=True)
+    return Response(serializer.data)
