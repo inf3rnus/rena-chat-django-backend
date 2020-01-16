@@ -1,4 +1,16 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+
+from users.models import CustomUser
+from users.serializers import UserSerializer
+from users.forms import CustomUserDetailsForm
+
+from friends.models import Friend
+from friends.serializers import FriendSerializer
 
 # Create your views here.
 
@@ -76,22 +88,6 @@ def removeFriend(request):
     if form.is_valid():
         new_friend = CustomUser.objects.get(username=form.cleaned_data['username'])
         Friend.remove_friend(request.user, new_friend)
-
-        return Response({"success": "true", "current_user": serializer.data['username']})
-
-    print("Form errors: ", form.errors)
-    return HttpResponse(status=500)
-
-@api_view(['post'])
-@permission_classes([IsAuthenticated])
-def removePendingFriend(request):
-    form = CustomUserDetailsForm(request.POST)
-    serializer = UserSerializer(request.user, many=False)
-    print('[requestFriend] - User <', serializer.data['username'], '> is trying to make a friend request to ', request.POST.get('username', ''))
-
-    if form.is_valid():
-        new_friend = CustomUser.objects.get(username=form.cleaned_data['username'])
-        Friend.remove_pending_friend(request.user, new_friend)
 
         return Response({"success": "true", "current_user": serializer.data['username']})
 
