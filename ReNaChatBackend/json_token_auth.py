@@ -14,7 +14,6 @@ class JsonWebTokenAuthenticationFromScope(BaseJSONWebTokenAuthentication):
     def get_jwt_value(self, scope):
         try:
             cookie = next(x for x in scope['headers'] if x[0].decode('utf-8') == 'cookie')[1].decode('utf-8')
-            print('COOKIE IS: ', cookies.SimpleCookie(cookie)['JWT'].value)
             return cookies.SimpleCookie(cookie)['JWT'].value
         except:
             return None
