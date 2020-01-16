@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
 
+    'channels',
+
     'api',
     'chat',
     'friends',
