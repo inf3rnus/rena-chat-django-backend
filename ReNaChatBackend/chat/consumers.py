@@ -19,6 +19,7 @@ class ChatConsumer(WebsocketConsumer):
             self.close()
 
     def disconnect(self, close_code):
+        print('User is: ', self.scope['user'].id)
         async_to_sync(self.channel_layer.group_discard)(
             "chat", self.channel_name)
         self.close(close_code)
