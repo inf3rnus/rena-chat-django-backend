@@ -1,1 +1,1 @@
-web: daphne LivelyBackend.asgi:application --port $PORT --bind 0.0.0.0
+web: daphne ReNaChatBackend.asgi:application --port $PORT --bind 0.0.0.0
