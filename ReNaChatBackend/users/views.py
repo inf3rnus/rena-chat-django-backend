@@ -1,19 +1,23 @@
-from rest_framework import generics
+from django.http import HttpResponse
 
-from . import models
-from . import serializers
+from rest_framework import generics
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+
+from .models import CustomUser
+from .forms import CustomUserDetailsForm
+from .serializers import UserSerializer
 
 class UserListView(generics.ListAPIView):
-    queryset = models.CustomUser.objects.all()
-    serializer_class = serializers.UserSerializer
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
 
 @api_view(['get'])
 @permission_classes([IsAuthenticated])
 def getCurrentProfile(request):
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
-    print("Form errors: ", form.errors)
-    return HttpResponse(status=500)
 
 @api_view(['post'])
 @permission_classes([IsAuthenticated])
