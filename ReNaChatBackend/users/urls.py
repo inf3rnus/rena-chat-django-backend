@@ -1,7 +1,10 @@
 from django.urls import include, path
 
-from . import views
+from .views import UserListView, getCurrentProfile, setProfilePicture, setProfileBio
 
 urlpatterns = [
-    path('', views.UserListView.as_view()),
+    path('', UserListView.as_view()),
+    path('get_current_profile', getCurrentProfile),
+    path('set_profile_picture', setProfilePicture),
+    path('set_profile_bio', setProfileBio),
 ]
