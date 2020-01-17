@@ -26,7 +26,7 @@ SECRET_KEY = 'x5tfqzh27g3j=ku*ade(70b4rb!17z%njwd*98e#auo!cm!8ss'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '10.0.2.2']
+ALLOWED_HOSTS = ['localhost', '10.0.2.2', 'rena-chat.herokuapp.com']
 
 
 # Application definition
@@ -171,7 +171,7 @@ STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, 'static/'),
 )
 
 #  Add configuration for static files storage using whitenoise
