@@ -44,3 +44,14 @@ def setProfileBio(request):
         return Response({'success':'true', 'bio': request.user.bio})
     print("Form errors: ", form.errors)
     return HttpResponse(status=500)
+
+@api_view(['get'])
+@permission_classes([IsAuthenticated])
+def getGlobalUsersByNameSearch(request):
+    try:
+        user_query_set = CustomUser.objects.filter(username__regex=r'^' + request.GET.get('username', None))
+        serializer = UserSerializer(user_query_set, many=True)
+        return Response(serializer.data)
+    except:
+        return HttpResponse(status=422)
+
