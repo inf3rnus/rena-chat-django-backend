@@ -7,7 +7,7 @@ Automat==0.8.0
 awscli==1.16.263
 boto3==1.9.253
 botocore==1.12.253
-certifi==2019.9.11
+certifi==2022.12.7
 cffi==1.13.2
 channels==2.3.1
 channels-redis==2.4.1
